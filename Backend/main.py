@@ -5,9 +5,12 @@ import os
 from schemas import Query
 from model_manager import ModelManager
 from openai import OpenAI
+from dotenv import load_dotenv
+
+load_dotenv("./project.env")
 
 client = OpenAI(
-    api_key="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"
+    api_key=os.getenv("OPENAI_API_KEY")
 )
 
 RAG_1 = RAGMultiModalModel.from_pretrained(
